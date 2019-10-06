@@ -2,35 +2,34 @@
 
 public class MovementPlayer : MonoBehaviour
 {
-    public Joystick joystick;
-    public FixedJoystickButton joystickButton;
+    public FixedJoystickJumpButton fixedJoystickJumpButton;
+    public FixedJoystickLeftButton fixedJoystickLeftButton;
+    public FixedJoystickRightButton fixedJoystickRightButton;
     public Animator animator;
     public CharacterController2D characterController2D;
     
-    public float runSpeed = 30f;
+    public float speed = 30f;
     float horizontalMove = 0f;
     bool jump = false;
 
     void Update()
     {
-        horizontalMove = joystick.Horizontal * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if(joystick.Horizontal >= .2f)
+        if(fixedJoystickRightButton.pressed)
         {
-            horizontalMove = runSpeed;
-        }else if(joystick.Horizontal <= -.2f)
+            horizontalMove = speed;
+        }else if(fixedJoystickLeftButton.pressed)
         {
-            horizontalMove = -runSpeed;
+            horizontalMove = -speed;
         }
         else
         {
             horizontalMove = 0;
         }
 
-        float verticalMove = joystick.Vertical;
-
-        if(!jump && joystickButton.pressed)
+        if(!jump && fixedJoystickJumpButton.pressed)
         {
             jump = true;
             animator.SetBool("IsJumping", true);

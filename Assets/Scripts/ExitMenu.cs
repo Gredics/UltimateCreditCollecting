@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ExitMenu : MonoBehaviour
+{
+    public void ExitToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+}

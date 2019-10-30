@@ -196,7 +196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7056615270074985093}
-        m_MethodName: OnLanding
+        m_MethodName: onLanding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -227,12 +227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 2710518726251988344}
   characterController2D: {fileID: 5756705837624267038}
-  fixedJoystickJumpButton: {fileID: 345592395259083311, guid: b4e13aae4d6d8ca4fadfc752f3d53327,
-    type: 3}
-  fixedJoystickLeftButton: {fileID: 1749954696285931247, guid: c6fe78227f24e144eb4c6f5aa63c6005,
-    type: 3}
-  fixedJoystickRightButton: {fileID: 5259464370615807312, guid: 955eeb68b37a13c459bfb60eeadf7573,
-    type: 3}
   animator: {fileID: 4244821128449760090}
   speed: 40
 --- !u!1 &5633748298934754942

@@ -3,7 +3,9 @@ guid: edfb27bc3c8eb5d40ac1ae79b9b18097
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - idle1_1: {fileID: 21300000, guid: 69d770583050e3044b719e02a363e085, type: 3}
+  - idle2_1: {fileID: 21300000, guid: 044a1c80fd3fdd64cb9e1decaa2b8820, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

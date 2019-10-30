@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.IO;
+using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -6,9 +8,9 @@ public class MovementPlayer : MonoBehaviour
 
     public CharacterController2D characterController2D;
 
-    public FixedJoystickJumpButton fixedJoystickJumpButton;
-    public FixedJoystickLeftButton fixedJoystickLeftButton;
-    public FixedJoystickRightButton fixedJoystickRightButton;
+    FixedJoystickJumpButton fixedJoystickJumpButton;
+    FixedJoystickLeftButton fixedJoystickLeftButton;
+    FixedJoystickRightButton fixedJoystickRightButton;
 
     public Animator animator;
     
@@ -16,7 +18,15 @@ public class MovementPlayer : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
 
-    void Update()
+    private void Start()
+    {
+        readFile();
+        fixedJoystickJumpButton = FindObjectOfType<FixedJoystickJumpButton>();
+        fixedJoystickLeftButton = FindObjectOfType<FixedJoystickLeftButton>();
+        fixedJoystickRightButton = FindObjectOfType<FixedJoystickRightButton>();
+    }
+
+    private void Update()
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * speed;
         if (player.name == "Player1")
@@ -46,14 +56,46 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    public void OnLanding()
-    {
-        animator.SetBool("IsJumping", false);
-    }
-
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         characterController2D.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+
+    public void readFile()
+    {
+        string fileName = "config.ini";
+
+        try
+        {
+            using (StreamReader input = new StreamReader(fileName))
+            {
+                try
+                {
+                    string[] lines = File.ReadAllLines(fileName);
+                    int costumeType = lines[0][0] - '0';
+
+                    if ((player.name[name.Length - 1] - '1') != costumeType)
+                    {
+                        player.SetActive(false);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                }
+
+                input.Close();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+    }
+
+    public void onLanding()
+    {
+        animator.SetBool("IsJumping", false);
     }
 }

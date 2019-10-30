@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ExitMenu : MonoBehaviour
+public class ExitToMenu : MonoBehaviour
 {
-    public void ExitToMenu()
+    public void exitToMenu()
     {
         SceneManager.LoadScene(0);
     }

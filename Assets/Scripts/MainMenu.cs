@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         changeCostumeButton = GameObject.Find("Change Costume").GetComponent<Button>();
+        fileName = Application.persistentDataPath + "/" + fileName;
         readFile();
     }
 
@@ -67,25 +68,32 @@ public class MainMenu : MonoBehaviour
 
     public void writeFile()
     {
-        using (StreamWriter output = new StreamWriter(fileName))
+        try
         {
-            try
+            using (StreamWriter output = new StreamWriter(fileName))
             {
-                if (changeCostumeButton.image.sprite == idle1_1)
+                try
                 {
-                    output.Write("0");
+                    if (changeCostumeButton.image.sprite == idle1_1)
+                    {
+                        output.Write("0");
+                    }
+                    else
+                    {
+                        output.Write("1");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    output.Write("1");
+                    Debug.LogError(e);
                 }
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e);
-            }
 
-            output.Close();
+                output.Close();
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
         }
     }
 

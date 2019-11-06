@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Credit
   - Dialogue Bubble
+  - Fixed Joystick Button
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dialogue Box
+    uniqueID: 206524733
     locked: 0

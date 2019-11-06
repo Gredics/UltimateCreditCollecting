@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MovementPlayer : MonoBehaviour
 {
-    public GameObject player;
-
     public CharacterController2D characterController2D;
+
+    public GameObject player;
 
     FixedJoystickJumpButton fixedJoystickJumpButton;
     FixedJoystickLeftButton fixedJoystickLeftButton;
@@ -18,8 +18,11 @@ public class MovementPlayer : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
 
+    string fileName = "config.ini";
+
     private void Start()
     {
+        fileName = Application.persistentDataPath + "/" + fileName;
         readFile();
         fixedJoystickJumpButton = FindObjectOfType<FixedJoystickJumpButton>();
         fixedJoystickLeftButton = FindObjectOfType<FixedJoystickLeftButton>();
@@ -64,8 +67,6 @@ public class MovementPlayer : MonoBehaviour
 
     public void readFile()
     {
-        string fileName = "config.ini";
-
         try
         {
             using (StreamReader input = new StreamReader(fileName))
@@ -96,6 +97,9 @@ public class MovementPlayer : MonoBehaviour
 
     public void onLanding()
     {
-        animator.SetBool("IsJumping", false);
+        if (player.name == "Player1")
+        {
+            animator.SetBool("IsJumping", false);
+        }
     }
 }

@@ -126,7 +126,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7237714719766588098
 BoxCollider2D:
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff1b133932ac3a42937972a60d3ab9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2710518726251988344}
   characterController2D: {fileID: 5756705837624267038}
+  player: {fileID: 2710518726251988344}
   animator: {fileID: 4244821128449760090}
   speed: 40
 --- !u!1 &5633748298934754942

@@ -16,7 +16,6 @@ public class Doorman : MonoBehaviour
         dialog = GameObject.Find("Dialog").GetComponent<Text>();
 
         dialogBox.SetActive(false);
-        dialog.text = "";
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

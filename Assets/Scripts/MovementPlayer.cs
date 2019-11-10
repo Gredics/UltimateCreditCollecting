@@ -18,7 +18,7 @@ public class MovementPlayer : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
 
-    string fileName = "config.ini";
+    string fileName = "settings.ini";
 
     private void Start()
     {

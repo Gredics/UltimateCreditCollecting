@@ -11,7 +11,8 @@ public class MainMenu : MonoBehaviour
 
     Button changeCostumeButton;
 
-    string fileName = "config.ini";
+    string fileName = "settings.ini";
+    string[] lines;
 
     void Start()
     {
@@ -25,10 +26,12 @@ public class MainMenu : MonoBehaviour
         if (changeCostumeButton.image.sprite == idle1_1)
         {
             changeCostumeButton.image.sprite = idle2_1;
+            lines[0] = "1";
         }
         else
         {
             changeCostumeButton.image.sprite = idle1_1;
+            lines[0] = "0";
         }
     }
 
@@ -36,11 +39,29 @@ public class MainMenu : MonoBehaviour
     {
         try
         {
+            if (!File.Exists(fileName))
+            {
+                using (StreamWriter output = new StreamWriter(fileName))
+                {
+                    output.Write("0\n" +
+                        "0");
+
+                    output.Close();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e);
+        }
+
+        try
+        {
             using (StreamReader input = new StreamReader(fileName))
             {
                 try
                 {
-                    string[] lines = File.ReadAllLines(fileName);
+                    lines = File.ReadAllLines(fileName);
                     char costumeType = lines[0][0];
 
                     if (costumeType == '0')
@@ -72,20 +93,9 @@ public class MainMenu : MonoBehaviour
         {
             using (StreamWriter output = new StreamWriter(fileName))
             {
-                try
+                for(int i = 0; i < lines.Length; i++)
                 {
-                    if (changeCostumeButton.image.sprite == idle1_1)
-                    {
-                        output.Write("0");
-                    }
-                    else
-                    {
-                        output.Write("1");
-                    }
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e);
+                    output.WriteLine(lines[i]);
                 }
 
                 output.Close();

@@ -228,7 +228,7 @@ MonoBehaviour:
   characterController2D: {fileID: 5756705837624267038}
   player: {fileID: 2710518726251988344}
   animator: {fileID: 4244821128449760090}
-  speed: 40
+  speed: 30
 --- !u!1 &5633748298934754942
 GameObject:
   m_ObjectHideFlags: 0

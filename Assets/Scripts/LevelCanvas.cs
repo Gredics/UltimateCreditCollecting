@@ -25,14 +25,7 @@ public class LevelCanvas : MonoBehaviour
             {
                 lines = File.ReadAllLines(fileName);
 
-                try
-                {
-                    creditCounter.text = lines[1];
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e);
-                }
+                creditCounter.text = lines[1];
 
                 input.Close();
             }
@@ -51,7 +44,7 @@ public class LevelCanvas : MonoBehaviour
             {
                 lines[1] = creditCounter.text;
 
-                for(int i = 0; i < lines.Length; i++)
+                for (int i = 0; i < lines.Length; i++)
                 {
                     output.WriteLine(lines[i]);
                 }
@@ -64,15 +57,13 @@ public class LevelCanvas : MonoBehaviour
         }
     }
 
-    public void exitToMenu()
-    {
-        writeFile();
-        SceneManager.LoadScene(0);
-    }
-
     public void exitToLobby()
     {
-        writeFile();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Lobby");
+    }
+
+    public void exitToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

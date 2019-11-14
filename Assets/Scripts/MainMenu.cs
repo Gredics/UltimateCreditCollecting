@@ -110,7 +110,13 @@ public class MainMenu : MonoBehaviour
     public void playGame()
     {
         Debug.Log("Starting the Game.");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Practice Level");
+    }
+
+    public void enterToLobby()
+    {
+        Debug.Log("Enter the Lobby.");
+        SceneManager.LoadScene("Lobby");
     }
 
     public void quitGame()

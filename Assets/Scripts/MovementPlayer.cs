@@ -8,9 +8,9 @@ public class MovementPlayer : MonoBehaviour
 
     public GameObject player;
 
-    FixedJoystickJumpButton fixedJoystickJumpButton;
-    FixedJoystickLeftButton fixedJoystickLeftButton;
-    FixedJoystickRightButton fixedJoystickRightButton;
+        FixedJoystickJumpButton fixedJoystickJumpButton;
+        FixedJoystickLeftButton fixedJoystickLeftButton;
+        FixedJoystickRightButton fixedJoystickRightButton;
 
     public Animator animator;
     

@@ -8,6 +8,12 @@ TagManager:
   - Dialogue Bubble
   - Fixed Joystick Button
   - Subject
+  - Next Button
+  - Exit
+  - Lobby
+  - Credit - Question
+  - Answer
+  - Doorman
   layers:
   - Default
   - TransparentFX

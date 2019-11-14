@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 596117624348367025}
   - component: {fileID: 8750580886806251567}
   - component: {fileID: 2208278622982886656}
-  - component: {fileID: 2794767462415464010}
+  - component: {fileID: 5613498372928873308}
   m_Layer: 0
   m_Name: Doorman
-  m_TagString: Untagged
+  m_TagString: Doorman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.80340254, y: 0.41034925}
   m_EdgeRadius: 0
---- !u!114 &2794767462415464010
+--- !u!114 &5613498372928873308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

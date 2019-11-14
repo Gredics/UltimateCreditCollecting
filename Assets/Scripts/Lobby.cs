@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class Lobby : MonoBehaviour
 {
     public Text creditCounter;
-
     public Text collectedCredit;
     public Slider creditSlider;
 
@@ -35,21 +34,18 @@ public class Lobby : MonoBehaviour
             {
                 lines = File.ReadAllLines(fileName);
 
-                try
-                {
-                    creditCounter.text = lines[1];
-                }catch(Exception e)
-                {
-                    Debug.LogError(e);
-                }
+                creditCounter.text = lines[1];
 
-                for (int i = 2; i < lines.Length; i++)
+                if (lines.Length > 2)
                 {
-                    for (int j = 0; j < subjects.Length; j++)
+                    for (int i = 2; i < lines.Length; i++)
                     {
-                        if(lines[i] == subjects[j].name)
+                        for (int j = 0; j < subjects.Length; j++)
                         {
-                            subjects[j].GetComponent<Image>().color = new Color32(74, 208, 131, 255);
+                            if (lines[i] == subjects[j].name)
+                            {
+                                subjects[j].GetComponent<Image>().color = new Color32(74, 208, 131, 255);
+                            }
                         }
                     }
                 }
@@ -71,10 +67,7 @@ public class Lobby : MonoBehaviour
             {
                 lines[1] = creditCounter.text;
 
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    output.WriteLine(lines[i]);
-                }
+                output.WriteLine(lines[0] + "\n" + lines[1]);
 
                 for (int i = 0; i < subjects.Length; i++)
                 {
@@ -91,12 +84,6 @@ public class Lobby : MonoBehaviour
         {
             Debug.LogError(e);
         }
-    }
-
-    public void exitToMenu()
-    {
-        writeFile();
-        SceneManager.LoadScene(0);
     }
 
     public void accomplishSubject()
@@ -136,5 +123,10 @@ public class Lobby : MonoBehaviour
         }
 
         collectedCredit.text = creditSlider.value.ToString() + "/" + all.ToString();
+    }
+
+    public void exitToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
